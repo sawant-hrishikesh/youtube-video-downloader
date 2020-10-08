@@ -48,7 +48,7 @@ def handleVideoFile():
 	video.download(quiet = False, filepath='/tmp')
 	filepath = '/tmp/' + video.title + ".webm"
 	os.rename(filepath, '/tmp/video.webm')
-	
+
 def mergeFiles():
 	cmd = ['ffmpeg', '-i', '/tmp/video.webm', '-i' ,'/tmp/audio.webm' ,'-map', '0:v' , '-map' , '1:a' , '-c' , 'copy' , '-y', video.title + '.webm']
 	sp = subprocess.Popen(cmd, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -84,7 +84,4 @@ if __name__ == '__main__':
 		handleVideoFile()
 		mergeFiles()
 
-
-#ffmpeg -i 1.webm -i 2.webm -map 0:v -map 1:a -c copy -y result.webm
-#pip install --upgrade youtube-dl
 
